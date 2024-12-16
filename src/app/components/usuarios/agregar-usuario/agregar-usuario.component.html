@@ -1,0 +1,61 @@
+<div class="container">
+    <h2>Agregar Usuario</h2>
+    <form [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()">
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Fecha de Registro</mat-label>
+            <input matInput [value]="fechaHoy" disabled />
+          </mat-form-field>
+          
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" required />
+        <mat-error *ngIf="usuarioForm.get('nombre')?.hasError('required')">
+          El nombre es obligatorio
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('nombre')?.hasError('maxlength')">
+          El nombre no debe exceder los 50 caracteres
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Apellido Paterno</mat-label>
+        <input matInput formControlName="paterno" required />
+        <mat-error *ngIf="usuarioForm.get('paterno')?.hasError('required')">
+          El apellido paterno es obligatorio
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('paterno')?.hasError('maxlength')">
+          El apellido paterno no debe exceder los 50 caracteres
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Apellido Materno</mat-label>
+        <input matInput formControlName="materno" required />
+        <mat-error *ngIf="usuarioForm.get('materno')?.hasError('required')">
+          El apellido materno es obligatorio
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('materno')?.hasError('maxlength')">
+          El apellido materno no debe exceder los 50 caracteres
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="correo" required />
+        <mat-error *ngIf="usuarioForm.get('correo')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('correo')?.hasError('email')">
+          El correo no es válido
+        </mat-error>
+      </mat-form-field>
+  
+      
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="!usuarioForm.valid">
+        Agregar Usuario
+      </button>
+    </form>
+  </div>
+  
